@@ -6,7 +6,7 @@ In statistical theory, a bigger sample size is always preferred if we do not nee
 
 ---
 ## Directory Layout
-![image](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration_v1.png)
+![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/illustration_v1.png)
 
 We assume the user set the default directory at **Graham** at Compute Canada
 ~~~
@@ -133,7 +133,7 @@ source $HOME/jupyter_py3/bin/activate
 ~~~
 4. before we run the .sh files, we use in the following commands in R (version 4.3.1) to install some R packages needed for the task
 ~~~
-install.packages(c('dbplyr','data.table','glmnet','fdapace','ggplot2','RColorBrewer','bit64', 'reshape2','graphics', 'e1071', 'caret', 'stringr', 'MTPS', 'Matrix', 'tidyr', 'xtable'))
+install.packages(c('glmnet','xxx','xxx'))
 ~~~
 
 ---
@@ -141,46 +141,36 @@ install.packages(c('dbplyr','data.table','glmnet','fdapace','ggplot2','RColorBre
 
 ## Running files (estimated time per job)
 
-- To run the files, submit .sh files with an order of 1. data cleaning.R to 6. appendix_table.R
+- To run the files, submit .sh files with an order of xxx
 - Always submit your job under [your_directory] instead of any of the subdirectory
-- The first and second jobs (e.g. "1. data cleaning", "2. feature construction") must be submitted in order; jobs "3. experiments with SVM model" and "3a. experiments with ELN model" can be submitted simultaneously; jobs "4. ensemble results with SVM model" and "4a. ensemble results with ELN model" can also be submitted at the same time; "5. figure" and "6. appendix_table" can be submitted simultaneously.
+- xxx: The first and second jobs (e.g. "1. data cleaning", "2. feature construction") must be submitted in order; jobs "3. experiments with SVM model" and "3a. experiments with ELN model" can be submitted simultaneously; jobs "4. ensemble results with SVM model" and "4a. ensemble results with ELN model" can also be submitted at the same time; "5. figure" and "6. appendix_table" can be submitted simultaneously.
 - The estimated time listed below are approximately 120% to 150% of the actual time. Usually the actual file running will be shorter.
 - For example, ./sh/xx.sh runs ./code/xx.R, saves the results at ./result/xx, produce graphs at ./figure/, generates table result in Latex format at ./rout/appendix_table.Rout and the log files at ./rout/xx
 
 
-<details><summary>1. data cleaning (10 hrs)</summary>
+<details><summary>1. running code “F-dis_before_permutation” (10 hrs)</summary>
 
-- read in the raw dataset from `/projects/def-ubcxzh/SharedData/NYSE16/GroupingResult/NBBO/`, load './rda/date.rda' and './code/wiltest.r';
-
-    - select the Dow Jones 30 component stocks of our interest and save each stock as a single R file;
-
-    - select the same set of variables for each stock data;
-
-    - basic stock price cleaning as stated in the paper in section "Data Manipulation";
-
-    - generate FPCA variables for each stock;
-
-- after data cleaning, save each stock price dataset as `./result/[stock_name]_final.rda` file.
+- set sample size from 10 to 10^6;
+  
+- save the type one error result as `./result/type1.rda` file.
 
  </details>
  
  ~~~
-    sbatch ./sh/data_cleaning.sh
-~~~
+    sbatch ./sh/ F_before_submit.sh
+ ~~~
 
 
-<details><summary>2. feature construction (3hrs)</summary>
+<details><summary>2. running code “F-dis_after_permutation” (15 hrs, submit 50 jobs)</summary>
 
-- read in read in `./result/[stock_name]_final.rda` file;
+- set sample size from 10 to 10^4;
 
-    - create all variables listed in "Multi-resolution Features Construction" in our paper except FPCAs;
-
-- save new R file `./result/[stock_name]_to_sample.rda` file.
+- save the result of type one error before permutation as `./result/result_type1` file, and the result of type one error after permutation as `./result/result_type1.per` file.
 
 </details>
 
 ~~~
-    sbatch ./sh/feature_encoding.sh
+    for kk in {1..50}; do sbatch ./sh/ F_after_submit.sh $kk; done
 ~~~
 
 
