@@ -1,12 +1,12 @@
-# Novel Modelling of High-frequency Stock Trading Data
+# [title of the big sample size project]
 ---
 
 ## About this Project
-Though machine learning-based methods are widely applied in stock mid-price prediction tasks, the feature engineering strategies specialized in high-frequency data are not fully explored. We propose three novel modelling strategies aiming to make better use of high-frequency data and solve the existing data redundancy issues. 
+In statistical theory, a bigger sample size is always preferred if we do not need to consider the cost of data collection and computing resources. However, in the real world, the assumptions of statistical theory are often not satisfied. In this case, the negative effect of big sample size may occur since when the sample size increases, the difference between the real setting and the ideal setting will also get more and more significant, which may exacerbate the performance of statistical analysis. 
 
 ---
 ## Directory Layout
-![image](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration.png)
+![image](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration_v1.png)
 
 We assume the user set the default directory at **Graham** at Compute Canada
 ~~~
@@ -16,7 +16,7 @@ all the R codes are in the subdirectory directory at **code**
 ~~~
     [your_deirctory]/code  
 ~~~
-all additional data to produce graphs except for the NYSE stock dataset are in the subdirectory directory at **rda** 
+all data to produce graphs is in the subdirectory directory at **rda** 
 ~~~
     [your_deirctory]/rda  
 ~~~
@@ -28,7 +28,7 @@ all the log files are in the subdirectory directory at **rout**
 ~~~
     [your_deirctory]/rout  
 ~~~
-all the final prediction results/intermedia results are in the subdirectory directory at **result** 
+all the final results/intermedia results are in the subdirectory directory at **result** 
 ~~~
     [your_deirctory]/result  
 ~~~
@@ -36,40 +36,36 @@ all the graphs in the paper are in the subdirectory directory at **figure**
 ~~~
     [your_deirctory]/figure  
 ~~~
-all the **raw datasets** from New York Stock Exchange are stored at the directory bellow, which are accessible to all group members
-~~~
-    /projects/def-ubcxzh/SharedData/NYSE16/GroupingResult/NBBO  
-~~~
 
 <details><summary>code</summary>
 
     ├── code  
-    │    ├── data_cleaning.R		    # clean the raw data 
-    │ 	 ├── feature_encoding.R 		# feature construction
-    │ 	 ├── sample_daily.R 			        # single experiments with SVM model
-    │ 	 ├── sample_ELN_daily.R			# single experiments with ELN model    
-    │ 	 ├── ensemble_svm_daily.R			# ensemble 100 results with SVM model    
-    │ 	 ├── ensemble_ELN_daily.R			# ensemble 100 results with ELN model    
-    │ 	 ├── figure.R			# Wilcoxon Sign Rank Test and Visualizations    
-    │ 	 ├── appendix_table.R		        # Visualizations
-    │ 	 └── wiltest.r  	        # Tool box with customized R functions					
+    │    ├── F-dis_before_permutation.R		    # setting of F-distribution before permutation 
+    │ 	 ├── F-dis_after_permutation.R 		# setting of F-distribution after permutation 
+    │ 	 ├── F-dis_visualization.R		    # using the results of F-distribution to do visualization
+    │ 	 ├── xxx.R			#     
+    │ 	 ├── xxxy.R			#     
+    │ 	 ├── xxx.R			#     
+    │ 	 ├── xxx.R			#     
+    │ 	 ├── xxx.R		        # 
+    │ 	 └── xxx.R  	        # 					
 </details>
 <details><summary>rda</summary>
 
     ├── rda    
-    │ 	 ├── date.rda		        # a file that records the trading dates
-    │ 	 ├── mkt_cap.csv		    # a file that records the maket capitalization for all 30 stocks (From Yahoo Finance)
-    │ 	 └── dj30.csv		        # a dataset to reproduce Dow Jones 30 index graph in the paper (From Yahoo Finance)				
+    │ 	 ├── result_type1		        # a file that stores the rda results from the setting of F-distribution before permutation(sample size from 10 to 10^4)
+    │ 	 ├── result_type1.per		    # a file that stores the rda results from the setting of F-distribution after permutation(sample size from 10 to 10^4)
+    │ 	 └── type1.rda		        # a file that stores the results from the setting of F-distribution before permutation(sample size from 10 to 10^6)				
 </details>
 <details><summary>sh</summary>
 
     ├── sh  
-    │    ├── data_cleaning.sh		# sh files
-    │ 	 ├── feature_encoding.sh					
-    │ 	 ├── sample_svm_daily.sh 			
-    │ 	 ├── sample_ELN_daily.sh 			
-    │ 	 ├── ensemble_svm_daily.sh
-    │ 	 ├── ensemble_ELN_daily.sh
+    │    ├── F_before_submit.sh		# sh files
+    │ 	 ├── F_after_submit.sh					
+    │ 	 ├── xxx.sh 			
+    │ 	 ├── xxx.sh 			
+    │ 	 ├── xxx.sh
+    │ 	 ├── xxx.sh
     │ 	 ├── figure.sh
     │ 	 └── appendix_table.sh				
 </details>
@@ -95,53 +91,17 @@ all the **raw datasets** from New York Stock Exchange are stored at the director
     │ 	 ├── [stock_name]_i_eln_nofpca_daily.rda			  
     │ 	 ├── [stock_name]_i_eln_nowin_daily.rda			    
     ├──  final result 
-    │ 	 ├── [stock_name]_svm_ensemble_model_daily.rda			# ensemble 100 results with SVM model for each component stock        	
-    │ 	 └── [stock_name]_eln_ensemble_model_daily.rda 		    # ensemble 100 results with ELN model for each component stock
+    │ 	 ├── result_type1		        # a file that stores the rda results from the setting of F-distribution before permutation(sample size from 10 to 10^4)       	
+    │ 	 ├── result_type1.per		    # a file that stores the rda results from the setting of F-distribution after permutation(sample size from 10 to 10^4)
+    │ 	 └── type1.rda		        # a file that stores the results from the setting of F-distribution before permutation(sample size from 10 to 10^6)
 </details>
-
 <details><summary>figure</summary>
 
     ├── figure    
-    │ 	 ├── combined_plot_daily.pdf (Figure3.pdf)
-    │ 	 ├── combined_plot_eln_daily.pdf (Figure4.pdf)
-    │ 	 ├── barplot.pdf (Figure5.pdf)
-    │ 	 └── dj30.pdf (Figure2.pdf)					
-</details>
-
-
-<details><summary>raw data</summary>
-    
-    ├── raw data
-    │        ├── EQY_US_ALL_NBBO_AAPL.txt
-    │        ├── EQY_US_ALL_NBBO_MSFT.txt		
-    │        ├── EQY_US_ALL_NBBO_MMM.txt		
-    │        ├── EQY_US_ALL_NBBO_AXP.txt 	
-    │        ├── EQY_US_ALL_NBBO_BA.txt
-    │        ├── EQY_US_ALL_NBBO_CAT.txt		
-    │        ├── EQY_US_ALL_NBBO_CVX.txt		
-    │        ├── EQY_US_ALL_NBBO_CSCO.txt 	
-    │        ├── EQY_US_ALL_NBBO_KO.txt
-    │        ├── EQY_US_ALL_NBBO_DOW.txt		
-    │        ├── EQY_US_ALL_NBBO_XOM.txt		
-    │        ├── EQY_US_ALL_NBBO_WBA.txt 	
-    │        ├── EQY_US_ALL_NBBO_GS.txt
-    │        ├── EQY_US_ALL_NBBO_HD.txt		
-    │        ├── EQY_US_ALL_NBBO_INTC.txt		
-    │        ├── EQY_US_ALL_NBBO_IBM.txt 	
-    │        ├── EQY_US_ALL_NBBO_JNJ.txt
-    │        ├── EQY_US_ALL_NBBO_JPM.txt		
-    │        ├── EQY_US_ALL_NBBO_MCD.txt		
-    │        ├── EQY_US_ALL_NBBO_MRK.txt 	
-    │        ├── EQY_US_ALL_NBBO_NKE.txt
-    │        ├── EQY_US_ALL_NBBO_PFE.txt		
-    │        ├── EQY_US_ALL_NBBO_PG.txt		
-    │        ├── EQY_US_ALL_NBBO_TRV.txt 	
-    │        ├── EQY_US_ALL_NBBO_UNH.txt
-    │        ├── EQY_US_ALL_NBBO_UTX.txt		
-    │        ├── EQY_US_ALL_NBBO_VZ.txt		
-    │        ├── EQY_US_ALL_NBBO_V.txt 	
-    │        ├── EQY_US_ALL_NBBO_WMT.txt 
-    │	     └── EQY_US_ALL_NBBO_DIS.txt 
+    │ 	 ├── xxx.pdf (Figure.pdf)
+    │ 	 ├── xxx.pdf (Figure.pdf)
+    │ 	 ├── xxx.pdf (Figure.pdf)
+    │ 	 └── xxx.pdf (Figure.pdf)					
 </details>
 
 ---
@@ -151,7 +111,7 @@ As all the processes are conducted using the relative path, it's very important 
 [your_directory] should be consisted of three parts: part 1 is ```/project/6003851/``` to ensure all the files can run on Compute Canada; part 2 is your ```user name``` at Compute Canada; part 3 is your ```folder's name```. For example, the writer's directory is as follows:
 
 ~~~
-/project/6003851/y2huang/midprice_predict/thesis_check
+/project/6003851/y2huang/big_sample_size_project/check
 ~~~
 
 If you are not sure about the path of your working folder, try to type in 'pwd' command in linux or 'getwd()' in R language for reference. 
@@ -164,14 +124,14 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
 ![image2](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration2.png)
 
-5. in the main directory, use the following commands to load R/4.0.2 language in Compute Canada (The environment settings in CC change occasionally, make sure to check and use their latest settings):
+5. in the main directory, use the following commands to load R/4.3.1 language in Compute Canada (The environment settings in CC change occasionally, make sure to check and use their latest settings):
 ~~~
-module load StdEnv/2020
-module load gcc/9.3.0 r/4.0.2
+module load StdEnv/2023
+module load gcc/xxx r/4.3.1
 module load python/3.7
 source $HOME/jupyter_py3/bin/activate
 ~~~
-4. before we run the .sh files, we use in the following commands in R (version 4.0.2) to install some R packages needed for the task
+4. before we run the .sh files, we use in the following commands in R (version 4.3.1) to install some R packages needed for the task
 ~~~
 install.packages(c('dbplyr','data.table','glmnet','fdapace','ggplot2','RColorBrewer','bit64', 'reshape2','graphics', 'e1071', 'caret', 'stringr', 'MTPS', 'Matrix', 'tidyr', 'xtable'))
 ~~~
