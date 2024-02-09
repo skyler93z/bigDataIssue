@@ -1,14 +1,14 @@
-# [title of the big sample size project]
+# [Minor Issues Escalated to Critical Levels in Large Samples: A Permutation-Based Fix]
 ---
 
 ## About this Project
-In statistical theory, a bigger sample size is always preferred if we do not need to consider the cost of data collection and computing resources. However, in the real world, the assumptions of statistical theory are often not satisfied. In this case, the negative effect of big sample size may occur since when the sample size increases, the difference between the real setting and the ideal setting will also get more and more significant, which may exacerbate the performance of statistical analysis. 
+In statistical theory, a bigger sample size is always preferred if we do not need to consider the cost of data collection and computing resources. However, in the real world, the assumptions of statistical theory are often not satisfied. In this case, the negative effect of big sample size may occur since when the sample size increases, the difference between the real setting and the ideal setting will also get more and more significant, which may exacerbate the performance of statistical analysis. This project aims to reveal the problem of big sample size through data simulation and then find solution to solve this issue.
 
 ---
 ## Directory Layout
 ![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/illustration_v1.png)
 
-We assume the user set the default directory at **Graham** at Compute Canada
+We assume the user set the default directory at **Cedar** at Compute Canada
 ~~~
     [your_deirctory]  
 ~~~
@@ -28,7 +28,7 @@ all the log files are in the subdirectory directory at **rout**
 ~~~
     [your_deirctory]/rout  
 ~~~
-all the final results/intermedia results are in the subdirectory directory at **result** 
+all the final results are in the subdirectory directory at **result** 
 ~~~
     [your_deirctory]/result  
 ~~~
@@ -40,34 +40,35 @@ all the graphs in the paper are in the subdirectory directory at **figure**
 <details><summary>code</summary>
 
     ├── code  
-    │    ├── F-dis_before_permutation.R		    # setting of F-distribution before permutation 
-    │ 	 ├── F-dis_after_permutation.R 		# setting of F-distribution after permutation 
-    │ 	 ├── F-dis_visualization.R		    # using the results of F-distribution to do visualization
-    │ 	 ├── xxx.R			#     
-    │ 	 ├── xxxy.R			#     
-    │ 	 ├── xxx.R			#     
-    │ 	 ├── xxx.R			#     
+    │    ├── F_possion_per_small.R		    # code for distribution misspecification scenario when sample size is from 10 to 10^2
+    │ 	 ├── F_possion_per_big.R 		# code for distribution misspecification scenario when sample size is from 10^2 to 10^5 
+    │ 	 ├── Figure1.R		    # code used for plotting Figure 1
+    │ 	 ├── Figure2.R			# code used for plotting Figure 2
+    │ 	 ├── xxx.R			    #     
+    │ 	 ├── xxx.R			    #     
+    │ 	 ├── xxx.R			    #     
     │ 	 ├── xxx.R		        # 
     │ 	 └── xxx.R  	        # 					
 </details>
 <details><summary>rda</summary>
 
     ├── rda    
-    │ 	 ├── result_type1		        # a file that stores the rda results from the setting of F-distribution before permutation(sample size from 10 to 10^4)
-    │ 	 ├── result_type1.per		    # a file that stores the rda results from the setting of F-distribution after permutation(sample size from 10 to 10^4)
-    │ 	 └── type1.rda		        # a file that stores the results from the setting of F-distribution before permutation(sample size from 10 to 10^6)				
+    │ 	 ├── F_type1		        # a file that stores the type one error from the setting of F-distribution before permutation(sample size from n[1] to n[50])
+    │ 	 ├── F_type1.per		    # a file that stores the type one error from the setting of F-distribution after permutation(sample size from n[1] to n[50])
+    │ 	 └── F_p.value		        # a file that stores the p-values from the setting of F-distribution before permutation(sample size from n[51] to n[60])	
+    │ 	 └── F_p.value.per		    # a file that stores the p-values from the setting of F-distribution after permutation(sample size from n[51] to n[60])	
 </details>
 <details><summary>sh</summary>
 
     ├── sh  
-    │    ├── F_before_submit.sh		# sh files
-    │ 	 ├── F_after_submit.sh					
+    │    ├── F_submit_small.sh		# sh files
+    │ 	 ├── F_submit_big.sh					
     │ 	 ├── xxx.sh 			
     │ 	 ├── xxx.sh 			
     │ 	 ├── xxx.sh
     │ 	 ├── xxx.sh
-    │ 	 ├── figure.sh
-    │ 	 └── appendix_table.sh				
+    │ 	 ├── xxx.sh
+    │ 	 └── xxx.sh				
 </details>
 <details><summary>rout</summary>
 
