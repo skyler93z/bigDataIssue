@@ -6,8 +6,6 @@ kk = as.numeric(args[1])
 time1 = Sys.time()
 print(time1)
 
-library(glmnet)
-
 set.seed(123)
 k = c(seq(1, 2, length.out = 30), seq(2, 5, length.out = 31)) # Set the 10^k as the volume of sample size
 k = k[-31] # Remove duplicates
