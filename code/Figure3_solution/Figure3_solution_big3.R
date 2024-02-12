@@ -7,8 +7,6 @@ ss = as.numeric(args[2]) # Grouping experiments
 time1 = Sys.time()
 print(time1)
 
-library(glmnet)
-
 set.seed(123 + ss)
 k = c(seq(1, 2, length.out = 30), seq(2, 5, length.out = 31)) # Set the 10^k as the volume of sample size
 k = k[-31] # Remove duplicates
@@ -85,11 +83,11 @@ for (i in 1:nexperiment){ # for each experiment
   
 }
 
-save(p.value, file = paste0("result_fig3/solution_big3/p.value_",kk,"_",ss,".rda"))
-save(p.value.per, file = paste0("result_fig3/solution_big3/p.value.per_",kk,"_",ss,".rda"))
-save(decision, file = paste0("result_fig3/solution_big3/decision_",kk,"_",ss,".rda"))
-save(beta1.permu, file = paste0("result_fig3/solution_big3/beta1.permu_",kk,"_",ss,".rda"))
-save(CI, file = paste0("result_fig3/solution_big3/CI_",kk,"_",ss,".rda"))
+save(p.value, file = paste0("./result/fig3/solution_big3/p.value_",kk,"_",ss,".rda"))
+save(p.value.per, file = paste0("./result/fig3/solution_big3/p.value.per_",kk,"_",ss,".rda"))
+save(decision, file = paste0("./result/fig3/solution_big3/decision_",kk,"_",ss,".rda"))
+save(beta1.permu, file = paste0("./result/fig3/solution_big3/beta1.permu_",kk,"_",ss,".rda"))
+save(CI, file = paste0("./result/fig3/solution_big3/CI_",kk,"_",ss,".rda"))
 
 time2 = Sys.time()
 print(time2 - time1)
