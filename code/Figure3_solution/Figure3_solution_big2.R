@@ -85,11 +85,11 @@ for (i in 1:nexperiment){ # for each experiment
   
 }
 
-save(p.value, file = paste0("result_fig3/solution_big2/p.value_",kk,"_",ss,".rda"))
-save(p.value.per, file = paste0("result_fig3/solution_big2/p.value.per_",kk,"_",ss,".rda"))
-save(decision, file = paste0("result_fig3/solution_big2/decision_",kk,"_",ss,".rda"))
-save(beta1.permu, file = paste0("result_fig3/solution_big2/beta1.permu_",kk,"_",ss,".rda"))
-save(CI, file = paste0("result_fig3/solution_big2/CI_",kk,"_",ss,".rda"))
+save(p.value, file = paste0("./result/fig3/solution_big2/p.value_",kk,"_",ss,".rda"))
+save(p.value.per, file = paste0("./result/fig3/solution_big2/p.value.per_",kk,"_",ss,".rda"))
+save(decision, file = paste0("./result/fig3/solution_big2/decision_",kk,"_",ss,".rda"))
+save(beta1.permu, file = paste0("./result/fig3/solution_big2/beta1.permu_",kk,"_",ss,".rda"))
+save(CI, file = paste0("./result/fig3/solution_big2/CI_",kk,"_",ss,".rda"))
 
 time2 = Sys.time()
 print(time2 - time1)
