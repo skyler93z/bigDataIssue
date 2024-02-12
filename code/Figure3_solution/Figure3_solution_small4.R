@@ -92,11 +92,11 @@ type1error = mean(p.value < alpha)
 type1error.per = mean(p.value.per < alpha)
 type1error.per.de = sum(decision)/nexperiment
 
-save(type1error, file = paste0("result_fig3/solution_small4/type1error_",kk,".rda"))
-save(type1error.per, file = paste0("result_fig3/solution_small4/type1error.per_",kk,".rda"))
-save(type1error.per.de, file = paste0("result_fig3/solution_small4/type1error.per.de_",kk,".rda"))
-save(beta1.permu, file = paste0("result_fig3/solution_small4/beta1.permu_",kk,".rda"))
-save(CI, file = paste0("result_fig3/solution_small4/CI_",kk,".rda"))
+save(type1error, file = paste0("./result/fig3/solution_small4/type1error_",kk,".rda"))
+save(type1error.per, file = paste0("./result/fig3/solution_small4/type1error.per_",kk,".rda"))
+save(type1error.per.de, file = paste0("./result/fig3/solution_small4/type1error.per.de_",kk,".rda"))
+save(beta1.permu, file = paste0("./result/fig3/solution_small4/beta1.permu_",kk,".rda"))
+save(CI, file = paste0("./result/fig3/solution_small4/CI_",kk,".rda"))
 
 time2 = Sys.time()
 print(time2 - time1)
