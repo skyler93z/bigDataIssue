@@ -47,7 +47,7 @@ for(ii in 1:nexperiment) {
 type_one[ss] = sum(p.value)/nexperiment
 
 # Save the result
-saveRDS(type_one, file = paste0("result_fig3/problem/type_one_",kk,"_",ss,".rds"))
+save(type_one, file = paste0("result_fig3/problem/type_one_",kk,"_",ss,".rda"))
 
 time2 = Sys.time()
 print(time2 - time1)
