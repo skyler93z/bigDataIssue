@@ -6,8 +6,6 @@ kk = as.numeric(args[1])
 time1 = Sys.time()
 print(time1)
 
-library(glmnet)
-
 set.seed(123)
 k = c(seq(1, 2, length.out = 30), seq(2, 5, length.out = 31)) # Set the 10^k as the volume of sample size
 k = k[-31] # Remove duplicates
@@ -92,11 +90,11 @@ type1error = mean(p.value < alpha)
 type1error.per = mean(p.value.per < alpha)
 type1error.per.de = sum(decision)/nexperiment
 
-save(type1error, file = paste0("result_fig3/solution_small2/type1error_",kk,".rda"))
-save(type1error.per, file = paste0("result_fig3/solution_small2/type1error.per_",kk,".rda"))
-save(type1error.per.de, file = paste0("result_fig3/solution_small2/type1error.per.de_",kk,".rda"))
-save(beta1.permu, file = paste0("result_fig3/solution_small2/beta1.permu_",kk,".rda"))
-save(CI, file = paste0("result_fig3/solution_small2/CI_",kk,".rda"))
+save(type1error, file = paste0("./result/fig3/solution_small2/type1error_",kk,".rda"))
+save(type1error.per, file = paste0("./result/fig3/solution_small2/type1error.per_",kk,".rda"))
+save(type1error.per.de, file = paste0("./result/fig3/solution_small2/type1error.per.de_",kk,".rda"))
+save(beta1.permu, file = paste0("./result/fig3/solution_small2/beta1.permu_",kk,".rda"))
+save(CI, file = paste0("./result/fig3/solution_small2/CI_",kk,".rda"))
 
 time2 = Sys.time()
 print(time2 - time1)
