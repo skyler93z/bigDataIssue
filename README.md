@@ -155,29 +155,17 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 ---
 ## Before you start
 1. decide the path of [your_directory] to replicate our results;
-2. create the subdirectories **code**, **rda**, **sh**, **rout**, **result**, **figure** at [your_directory]；
-3. allocate all relevant files into each subdirectory. The **rout**, **result** and **figure** folders will be empty at the beginning while the **code**, **sh** and **rda** folders should look like the figure below:
+2. create the subdirectories, first layer: **PoisBias**, **scenario1**, **scenario2**; and second layer: **code**, **sh**, **rout**, **result**, **figure** at [your_directory]；
+3. create another layer of subdirectories **F_beta1.permu**, **F_CI**, **F_decision**, **F_p.value**, **F_p.value.per**, **F_type1**, **F_type1.per**, **F_type1.per.de** under the **result** subdirectory of "scenario1" and "scenario2" to store the different results of the codes;
+4. allocate all relevant files into each subdirectory. The **rout**, **result** and **figure** folders will be empty at the beginning while the **code**, **sh** folders should look like the figure below:
 
 ![image2](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration2.png)
-
-5. in the main directory, use the following commands to load R/4.3.1 language in Compute Canada (The environment settings in CC change occasionally, make sure to check and use their latest settings):
-~~~
-module load StdEnv/2023
-module load gcc/xxx r/4.3.1
-module load python/3.7
-source $HOME/jupyter_py3/bin/activate
-~~~
-4. before we run the .sh files, we use in the following commands in R (version 4.3.1) to install some R packages needed for the task
-~~~
-install.packages(c('glmnet','xxx','xxx'))
-~~~
 
 ---
 
 
 ## Running files (estimated time per job)
 
-- To run the files, submit .sh files with an order of xxx
 - Always submit your job under [your_directory] instead of any of the subdirectory
 - xxx: The first and second jobs (e.g. "1. data cleaning", "2. feature construction") must be submitted in order; jobs "3. experiments with SVM model" and "3a. experiments with ELN model" can be submitted simultaneously; jobs "4. ensemble results with SVM model" and "4a. ensemble results with ELN model" can also be submitted at the same time; "5. figure" and "6. appendix_table" can be submitted simultaneously.
 - The estimated time listed below are approximately 120% to 150% of the actual time. Usually the actual file running will be shorter.
