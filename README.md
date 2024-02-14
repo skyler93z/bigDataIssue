@@ -15,24 +15,23 @@ We assume the user set the default directory at **Cedar** at Compute Canada
 ~~~
     [your_deirctory]  
 ~~~
-(using the "scenario1" subdirectory as an example)
-all the R codes are in the subdirectory directory at **code** 
+all the R codes are in the subdirectory directory at **code** (using the "scenario1" subdirectory as an example)
 ~~~
     [your_deirctory]/scenario1/code  
 ~~~
-all the .sh files that run the R files are in the subdirectory directory at **sh** 
+all the .sh files that run the R files are in the subdirectory directory at **sh** (using the "scenario1" subdirectory as an example)
 ~~~
     [your_deirctory]/scenario1/sh  
 ~~~
-all the log files are in the subdirectory directory at **rout** 
+all the log files are in the subdirectory directory at **rout** (using the "scenario1" subdirectory as an example)
 ~~~
     [your_deirctory]/scenario1/rout  
 ~~~
-all the final results are in the subdirectory directory at **result** 
+all the final results are in the subdirectory directory at **result** (using the "scenario1" subdirectory as an example)
 ~~~
     [your_deirctory]/scenario1/result  
 ~~~
-all the graphs in the paper are in the subdirectory directory at **figure** 
+all the graphs in the paper are in the subdirectory directory at **figure** (using the "scenario1" subdirectory as an example)
 ~~~
     [your_deirctory]/scenario1/figure  
 ~~~
@@ -41,8 +40,7 @@ all the graphs in the paper are in the subdirectory directory at **figure**
 <details><summary>code</summary>
 
     ├── code  
-    │   └── PoisBias.R		    # code for Figure1
-					
+    │   └── PoisBias.R		    # code for Figure1				
 </details>
 <details><summary>figure</summary>
 
@@ -56,67 +54,36 @@ all the graphs in the paper are in the subdirectory directory at **figure**
     ├── code  
     │    ├── F_possion_per_small.R		    # code for distribution misspecification scenario when sample size is from 10 to 10^2
     │ 	 ├── F_possion_per_big.R 		# code for distribution misspecification scenario when sample size is from 10^2 to 10^5 
-    │ 	 ├── Figure1.R		    # code used for plotting Figure 1
-    │ 	 ├── Figure2.R			# code used for plotting Figure 2
-    │ 	 ├── xxx.R			    #     
-    │ 	 ├── xxx.R			    #     
-    │ 	 ├── xxx.R			    #     
-    │ 	 ├── xxx.R		        # 
-    │ 	 └── xxx.R  	        # 					
-</details>
-<details><summary>rda</summary>
-
-    ├── rda    
-    │ 	 ├── F_type1		        # a file that stores the type one error from the setting of F-distribution before permutation(sample size from n[1] to n[50])
-    │ 	 ├── F_type1.per		    # a file that stores the type one error from the setting of F-distribution after permutation(sample size from n[1] to n[50])
-    │ 	 └── F_p.value		        # a file that stores the p-values from the setting of F-distribution before permutation(sample size from n[51] to n[60])	
-    │ 	 └── F_p.value.per		    # a file that stores the p-values from the setting of F-distribution after permutation(sample size from n[51] to n[60])	
+    │ 	 └── Figure2.R		    # code used for plotting Figure 2
 </details>
 <details><summary>sh</summary>
 
     ├── sh  
     │    ├── F_submit_small.sh		# sh files
-    │ 	 ├── F_submit_big.sh					
-    │ 	 ├── xxx.sh 			
-    │ 	 ├── xxx.sh 			
-    │ 	 ├── xxx.sh
-    │ 	 ├── xxx.sh
-    │ 	 ├── xxx.sh
-    │ 	 └── xxx.sh				
+    │ 	 └── F_submit_big.sh								
 </details>
 <details><summary>rout</summary>
 
     ├──  log files after submitting jobs
-    │    ├── data_cleaning.Rout		    # log file for data_cleaning.sh
-    │ 	 ├── feature_encoding.Rout		# log file for feature_encoding.sh
-    │ 	 ├── sample_svm_daily.i.Rout 			# log file for sample_svm.sh for each seed i (i=1,...,100)
-    │ 	 ├── sample_ELN_daily.i.Rout	    # log file for sample_ELN_full.sh for each seed i (i=1,...,100)     
-    │ 	 ├── ensemble_svm_daily.Rout			# log file for ensemble_svm.sh 
-    │ 	 ├── ensemble_ELN_daily.Rout 		    # log file for ensemble_ELN.sh
-    │ 	 ├── figure.Rout                # log file for figure.sh
-    │ 	 └── appendix_table.Rout        # log file for appendix_table.sh, generated Latex tables will be stored here
+    │ 	 ├── F_possion_per_small.kk.Rout	    # log file for F_possion_per_small.sh for each sample size kk (kk=1,...,50)     
+    │ 	 └── F_possion_per_big.kk.ss.Rout       # log file for F_possion_per_big.sh for each sample size kk (kk=51,...,60) and each experiment batch ss (ss=1,...,10)  
 </details>
-<details><summary>results (final & intermedia results)</summary>
-
-    ├──  intermedia result
-    │    ├── [stock_name]_final.rda		    # after cleaning the raw data for each component stock 
-    │ 	 ├── [stock_name]_to_sample.rda		# feature construction for each component stock
-    │ 	 ├── [stock_name]_i_model_svm_daily.rda 			# single experiments with SVM model for each component stock (i=1,...,100)
-    │ 	 ├── [stock_name]_i_eln_daily.rda			# single experiments with ELN model for each component stock (i=1,...,100)    
-    │ 	 ├── [stock_name]_i_eln_nofpca_daily.rda			  
-    │ 	 ├── [stock_name]_i_eln_nowin_daily.rda			    
-    ├──  final result 
-    │ 	 ├── result_type1		        # a file that stores the rda results from the setting of F-distribution before permutation(sample size from 10 to 10^4)       	
-    │ 	 ├── result_type1.per		    # a file that stores the rda results from the setting of F-distribution after permutation(sample size from 10 to 10^4)
-    │ 	 └── type1.rda		        # a file that stores the results from the setting of F-distribution before permutation(sample size from 10 to 10^6)
+<details><summary>result</summary>
+	    
+    ├──  result 
+    │ 	 ├── F_beta1.permu          # a file that stores the rda results of permutated beta1 values 
+    │ 	 ├── F_CI		    # a file that stores the rda results of confidence interval
+    │ 	 ├── F_decision		    # a file that stores the rda results of the decisions of the hypothesis tests
+    │ 	 ├── F_p.value		    # a file that stores the rda results of p-values before permutation
+    │ 	 ├── F_p.value.per          # a file that stores the rda results of p-values after permutation
+    │ 	 ├── F_type1		    # a file that stores the rda results of type one error before permutation
+    │ 	 ├── F_type1.per	    # a file that stores the rda results of type one error after permutation(using p-values to compute)
+    │ 	 └── F_type1.per.de	    # a file that stores the rda results of type one error after permutation(using decisions to compute)
 </details>
 <details><summary>figure</summary>
 
-    ├── figure    
-    │ 	 ├── xxx.pdf (Figure.pdf)
-    │ 	 ├── xxx.pdf (Figure.pdf)
-    │ 	 ├── xxx.pdf (Figure.pdf)
-    │ 	 └── xxx.pdf (Figure.pdf)					
+    ├── figure   
+    │ 	 └── Figure.2		    # Figure2 in manuscript					
 </details>
 
 ### scenario2
@@ -133,14 +100,6 @@ all the graphs in the paper are in the subdirectory directory at **figure**
     │ 	 ├── xxx.R		        # 
     │ 	 └── xxx.R  	        # 					
 </details>
-<details><summary>rda</summary>
-
-    ├── rda    
-    │ 	 ├── F_type1		        # a file that stores the type one error from the setting of F-distribution before permutation(sample size from n[1] to n[50])
-    │ 	 ├── F_type1.per		    # a file that stores the type one error from the setting of F-distribution after permutation(sample size from n[1] to n[50])
-    │ 	 └── F_p.value		        # a file that stores the p-values from the setting of F-distribution before permutation(sample size from n[51] to n[60])	
-    │ 	 └── F_p.value.per		    # a file that stores the p-values from the setting of F-distribution after permutation(sample size from n[51] to n[60])	
-</details>
 <details><summary>sh</summary>
 
     ├── sh  
@@ -165,16 +124,9 @@ all the graphs in the paper are in the subdirectory directory at **figure**
     │ 	 ├── figure.Rout                # log file for figure.sh
     │ 	 └── appendix_table.Rout        # log file for appendix_table.sh, generated Latex tables will be stored here
 </details>
-<details><summary>results (final & intermedia results)</summary>
-
-    ├──  intermedia result
-    │    ├── [stock_name]_final.rda		    # after cleaning the raw data for each component stock 
-    │ 	 ├── [stock_name]_to_sample.rda		# feature construction for each component stock
-    │ 	 ├── [stock_name]_i_model_svm_daily.rda 			# single experiments with SVM model for each component stock (i=1,...,100)
-    │ 	 ├── [stock_name]_i_eln_daily.rda			# single experiments with ELN model for each component stock (i=1,...,100)    
-    │ 	 ├── [stock_name]_i_eln_nofpca_daily.rda			  
-    │ 	 ├── [stock_name]_i_eln_nowin_daily.rda			    
-    ├──  final result 
+<details><summary>result (final & intermedia results)</summary>
+		    
+    ├──  result 
     │ 	 ├── result_type1		        # a file that stores the rda results from the setting of F-distribution before permutation(sample size from 10 to 10^4)       	
     │ 	 ├── result_type1.per		    # a file that stores the rda results from the setting of F-distribution after permutation(sample size from 10 to 10^4)
     │ 	 └── type1.rda		        # a file that stores the results from the setting of F-distribution before permutation(sample size from 10 to 10^6)
