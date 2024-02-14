@@ -51,16 +51,16 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 ### scenario1
 <details><summary>code</summary>
 
-    ├── code  
-    │    ├── F_possion_per_small.R		    # code for distribution misspecification scenario when sample size is from 10 to 10^2
-    │ 	 ├── F_possion_per_big.R 		# code for distribution misspecification scenario when sample size is from 10^2 to 10^5 
-    │ 	 └── Figure2.R		    # code used for plotting Figure 2
+    ├──  code 
+    │ 	 ├── F_possion_per_small.R		    # code for distribution misspecification scenario when sample size is from n[1] to n[50]
+    │ 	 ├── F_possion_per_big.R 		# code for distribution misspecification scenario when sample size is from n[51] to n[60]
+    │ 	 └── Figure2.R		           # code used for plotting Figure 2
 </details>
 <details><summary>sh</summary>
 
-    ├── sh  
-    │    ├── F_submit_small.sh		# sh files
-    │ 	 └── F_submit_big.sh								
+    ├──  sh
+    │ 	 ├── F_submit_small.sh		# sh files     
+    │ 	 └── F_submit_big.sh  
 </details>
 <details><summary>rout</summary>
 
