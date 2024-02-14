@@ -167,169 +167,46 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 ## Running files (estimated time per job)
 
 - Always submit your job under [your_directory] instead of any of the subdirectory
-- xxx: The first and second jobs (e.g. "1. data cleaning", "2. feature construction") must be submitted in order; jobs "3. experiments with SVM model" and "3a. experiments with ELN model" can be submitted simultaneously; jobs "4. ensemble results with SVM model" and "4a. ensemble results with ELN model" can also be submitted at the same time; "5. figure" and "6. appendix_table" can be submitted simultaneously.
+- The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers
 - The estimated time listed below are approximately 120% to 150% of the actual time. Usually the actual file running will be shorter.
-- For example, ./sh/xx.sh runs ./code/xx.R, saves the results at ./result/xx, produce graphs at ./figure/, generates table result in Latex format at ./rout/appendix_table.Rout and the log files at ./rout/xx
+- For example, on Compute Canada, ./scenario1/sh/xx.sh runs ./scenario1/code/xx.R, saves the results at ./scenario1/result/xx, and the log files at ./scenario1/rout/xx.Rout
+- For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produce graph at ./scenario1/figure
 
+### scenario1
 
-<details><summary>1. running code “F-dis_before_permutation” (10 hrs)</summary>
+<details><summary> 1. running code “F_possion_per_small.R” (11 hrs)</summary>
 
-- set sample size from 10 to 10^6;
-  
-- save the type one error result as `./result/type1.rda` file.
+- using loop kk equals 1 to 50 to set different sample size from n[1] to n[50];
 
- </details>
- 
+    - fit the regression model;
+
+    - use permutation method to correct the issue;
+
+- save file `./scenario1/result/F_type1/F_type1error_kk.rda`, `./scenario1/result/F_type1.per/F_type1error.per_kk.rda`, `./scenario1/result/F_type1.per.de/F_type1error.per.de_kk.rda`, `./scenario1/result/F_beta1.permu/F_beta1.permu_kk.rda`, `./scenario1/result/F_CI/F_CI_kk.rda`
+    
+</details>
+
  ~~~
-    sbatch ./sh/ F_before_submit.sh
+    for kk in {1..50}; do sbatch ./scenario1/sh/F_submit_small.sh $kk; done
  ~~~
 
 
-<details><summary>2. running code “F-dis_after_permutation” (15 hrs, submit 50 jobs)</summary>
+<details><summary>2. running code “F_possion_per_big.R” (15 hrs)</summary>
 
-- set sample size from 10 to 10^4;
+- using loop kk equals 1 to 50 and loop ss equals 1 to 10 to set different sample size from n[51] to n[60] and set different batch of experiments;
 
-- save the result of type one error before permutation as `./result/result_type1` file, and the result of type one error after permutation as `./result/result_type1.per` file.
+    - fit the regression model;
 
-</details>
+    - use permutation method to correct the issue;
 
-~~~
-    for kk in {1..50}; do sbatch ./sh/ F_after_submit.sh $kk; done
-~~~
-
-
-<details><summary> 3. experiments with SVM model (3 hrs, submit 100 jobs)</summary>
-**note that this job will be submitted 100 times with random seed i from 1 to 100**
-
-- read in R file `./result/[stock_name]_to_sample.rda`;
-
-    - label the response variable (stock mid-price movement);
-
-    - read in random seed i, subsample sample of 10,000 obs with 8,000 training set and 2,000 testing set;
-
-    - data winsorization and standardization;
-
-    - conduct experiments: baseline model without ensemble/baseline model without FPCA/baseline model without "within-window" features;
-
-    - calculate Recall, Precision and F1 score for each experiment above;
-
-- save file `./result/[stock_name]_i_model_svm_daily.rda`.
+- save file `./scenario1/result/F_p.value/F_p.value_kk_ss.rda`, `./scenario1/result/F_p.value.per/F_p.value.per_kk_ss.rda`, `./scenario1/result/F_decision/F_decision_kk_ss.rda`, `./scenario1/result/F_beta1.permu/F_beta1.permu_kk_ss.rda`, `./scenario1/result/F_CI/F_CI_kk_ss.rda`
     
 </details>
 
-
-<details><summary> 3a. experiments with ELN model (3 hrs, submit 100 jobs)</summary>
-**note that this job will be submitted 100 times with random seed from 1 to 100**
-
-- read in R file `./result/[stock_name]_to_sample.rda`;
-
-    - label the response variable (stock mid-price movement);
-
-    - read in random seed i, subsample sample of 10,000 obs with 8,000 training set and 2,000 testing set;
-
-    - data winsorization and standardization;
-
-    - conduct experiments: baseline ELN model without ensemble;
-
-    - calculate Recall, Precision and F1 score with the application of manually defined function "get Accuracy" from "wiltest.r";
-
-- save file `./result/[stock_name]_i_eln_daily.rda`, `./result/[stock_name]_i_eln_nofpca_daily.rda`, and `./result/[stock_name]_i_eln_nowin_daily.rda`.
-
-</details>
-
-~~~
-    for ii in {1..100}; do sbatch ./sh/sample_svm_daily.sh $ii; done
-    for ii in {1..100}; do sbatch ./sh/sample_ELN_daily.sh $ii; done
- ~~~  
+ ~~~
+    for kk in {51..60}; do for ss in {1..10}; do sbatch ./scenario1/sh/F_submit_big.sh $kk $ss; done; done
+ ~~~
 
 
-<details><summary> 4. ensemble results with SVM model (6 hrs, submit 30 jobs)</summary>
-    **SVM model ensemble is too slow, divide it into 30 separate jobs representing 30 targeted stocks**
+### scenario2
 
-- using loop i equals 1 to 100 and read in data `./result/[stock_name]_i_model_svm_daily.rda`;
-
-    - skip experiments that don't have converged results;
-
-    - use the voting scheme to make final predictions;
-
-    - calculate Recall, Precision and F1 score for each ensemble experiment (e.g. baseline model/baseline model without FPCAs/baseline model without "within-window" vars);
-
-- store all accuracy as R file `./result/[stock_name]_svm_ensemble_model_daily.rda`.
-    
-</details>
-
-
-<details><summary> 4a. ensemble results with ELN model (6 hrs)</summary>
-
-- using loop i equals 1 to 100 and read in data `./result/[stock_name]_i_eln_daily.rda`;
-
-    - skip experiments that don't have converged results;
-
-    - use the voting scheme to make final predictions;
-
-    - calculate Recall, Precision and F1 score for the ensemble experiment (e.g. baseline model with ELN);
-
-- store all accuracy as R file `./result/[stock_name]_eln_ensemble_model_daily.rda`.
-        
-</details>
-
-~~~
-    for ii in {1..30}; do sbatch ./sh/ensemble_svm_daily.sh $ii; done
-    sbatch ./sh/ensemble_ELN_daily.sh
-~~~ 
-
-customized R functions are defined in `wiltest.R` file; `figure.R` and `appendix_table.R` produce visualizations and table results, which can be run on local server
-
-<details><summary> 5. generating figures in the paper (10 mins)</summary>
-- read in data `./rda/dow_jones30_daily.csv`;
-
-    - illstrates the daily price change of Dow Jones 30 index;
-
-- store figure 1 `./figure/dj30.pdf (Figure2.pdf)`.
-
-- using loop i equals 1 to 30 and read in data `./result/[char_name]_svm_ensemble_model_daily.rda`;
-
-    - produces boxplots using ggplot;
-
-    - shows comparisons between baseline model v.s. ensemble model, baseline model v.s. no FPCA model, and baseline model v.s. no within-window model;
-
-- store figure 2 `./figure/combined_plot_daily.pdf (Figure3.pdf)`.
-
-- read in data `./result/[stock_name]_i_eln_daily.rda`, `./result/[stock_name]_i_eln_nofpca_daily.rda`, and `./result/[stock_name]_i_eln_nowin_daily.rda`;
-
-    - produces boxplots using ggplot;
-
-    - shows comparisons between baseline model v.s. ensemble eln model, baseline model v.s. no FPCA model, and baseline model v.s. no within-window model;
-
-- store figure 3 `./figure/combined_plot_eln_daily.pdf (Figure4.pdf)`.
-    
-- using loop k equals 1 to 30 and read in data `./result/[char_name]_k_eln_daily.rda`;
-
-    - produces barplots using ggplot;
-
-    - shows histogram of selected variables by ELN model in all three mid-price direction;
-
-- store figure 4 `./figure/barplot.pdf (Figure5.pdf)`.
-    
-        
-</details>
-
-~~~
-    sbatch ./sh/figure.sh
-~~~ 
-<details><summary> 6. produces tables in the paper (30 mins)</summary>
-**All the table results output are in latex format, they are printed in the log file at './rout/appendix_table.Rout'**
-
-- produces table1 showing the median values of Recall, Precision and F1 score of the baseline model over all 100 experiments;
-
-- produces table2 showing the median values of Recall, Precision and F1 score of the ensemble with SVM, nofpca, and no within-win models over all 100 experiments respectively;
-
-- produces tables showing the summary statistics of the features of the full sample, read in data `./rda/mkt_cap.csv`;
-
-- save file `./result/intermedia_table.rda`
-        
-</details>
-
-~~~
-    sbatch ./sh/appendix_table.sh
-~~~ 
