@@ -23,4 +23,4 @@ abline(v=0,col=2, lwd=3,lty=2)
 dev.off()
 
 
-plot(log(sizes)/log(10), apply(bias,1, median))
+#plot(log(sizes)/log(10), apply(bias,1, median))
