@@ -191,7 +191,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
  ~~~
 
 
-<details><summary>2. running code “F_possion_per_big.R” (15 hrs)</summary>
+<details><summary>2. running code “F_possion_per_big.R” (22 hrs)</summary>
 
 - using loop kk equals 1 to 50 and loop ss equals 1 to 10 to set different sample size from n[51] to n[60] and set different batch of experiments;
 
