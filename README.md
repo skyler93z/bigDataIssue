@@ -210,3 +210,44 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
 ### scenario2
 
+<details><summary> 1. running code “F_possion_per_small.R” (20 hrs)</summary>
+
+- using loop kk equals 1 to 60 and loop ss equals 1 to 4 to set different sample size and beta values;
+
+    - fit the regression model to reveal the issue;
+
+- save file `./scenario2/result/problem_typeIerror/typeIerror_kk_ss.rda`
+    
+<details><summary> 2. running code “solution_small.R” (20 hrs)</summary>
+
+- using loop kk equals 1 to 50 and loop ss equals 1 to 4 to set different sample size and beta values from n[1] to n[50];
+
+    - fit the regression model;
+
+    - use permutation method to correct the issue;
+
+- save file `./scenario2/result/solution_typeI/typeIerror_kk_ss.rda`, `./scenario2/result/solution_typeI.per/typeIerror.per_kk_ss.rda`, `./scenario2/result/solution_typeI.per.de/typeIerror.per.de_kk)ss.rda`, `./scenario2/result/solution_beta1.permu_small/beta1.permu_kk_ss.rda`, `./scenario2/result/solution_CI_small/CI_kk_ss.rda`
+    
+</details>
+
+ ~~~
+    for kk in {1..50}; do for ss in {1..4}; do sbatch ./scenario2/sh/solution_small_sh $kk $ss; done; done
+ ~~~
+
+
+<details><summary>3. running code “F_possion_per_big.R” (20 hrs)</summary>
+
+- using loop kk equals 1 to 50, loop ss equals 1 to 4 and loop gg equals 1 to 10 to set different sample size and beta values from n[51] to n[60] and set different batch of experiments;
+
+    - fit the regression model;
+
+    - use permutation method to correct the issue;
+
+- save file `./scenario2/result/solution_p.value/p.value_kk_ss_gg.rda`, `./scenario2/result/solution_p.value.per/p.value.per_kk_ss_gg.rda`, `./scenario2/result/solution_decision/decision_kk_ss_gg.rda`, `./scenario2/result/solution_beta1.permu_big/beta1.permu_kk_ss)gg.rda`, `./scenario2/result/solution_CI_big/CI_kk_ss_gg.rda`
+    
+</details>
+
+ ~~~
+    for kk in {51..60}; do for ss in {1..4}; do for gg in {1..10}; do sbatch ./scenario2/sh/solution_big_sh $kk $ss $gg; done; done; done
+ ~~~
+
