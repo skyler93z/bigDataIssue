@@ -223,9 +223,6 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
  ~~~
     for kk in {1..60}; do for ss in {1..4}; do sbatch ./scenario2/sh/problem_sh $kk $ss; done; done
  ~~~
-
-
-<details>
   
     
 <details><summary> 2. running code “solution_small.R” (20 hrs)</summary>
