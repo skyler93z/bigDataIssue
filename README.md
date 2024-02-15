@@ -2,7 +2,11 @@
 ---
 
 ## About this Project
-In statistical theory, a bigger sample size is always preferred if we do not need to consider the cost of data collection and computing resources. However, in the real world, the assumptions of statistical theory are often not satisfied. In this case, the negative effect of big sample size may occur since when the sample size increases, the difference between the real setting and the ideal setting will also get more and more significant, which may exacerbate the performance of statistical analysis. This project aims to reveal the problem of big sample size through data simulation and then find solution to solve this issue.
+In the big data era, the need to reevaluate traditional statistical methods is paramount due to the challenges posed by vast datasets. While larger samples theoretically enhance accuracy and hypothesis testing power without increasing false positives, practical concerns about inflated Type-I errors persist. The prevalent belief is that larger samples can uncover subtle effects, necessitating dual consideration of p-value and effect size. Yet, the reliability of p-values from large samples remains debated.
+
+This project warns that larger samples can exacerbate minor issues into significant errors, leading to false conclusions. Through our simulation study, we demonstrate how growing sample sizes amplify issues arising from two commonly encountered violations of model assumptions in real-world data and lead to incorrect decisions. This underscores the need for vigilant analytical approaches in the era of big data. In response, we introduce a permutation-based test to counterbalance the effects of sample size and assumption discrepancies by neutralizing them between actual and permuted data. We demonstrate that this approach effectively stabilizes nominal Type I error rates across various sample sizes, thereby ensuring robust statistical inferences even amidst breached conventional assumptions in big data.
+
+For reproducibility, we build this repository to share our original codes, results, figures and all the other things used in our manuscript.
 
 ---
 ## Directory Layout
@@ -143,12 +147,7 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 ---
 ## Notice
 
-As all the processes are conducted using the relative path, it's very important to set up [your_directory] and use it correctly. 
-[your_directory] should be consisted of three parts: part 1 is ```/project/6003851/``` to ensure all the files can run on Compute Canada; part 2 is your ```user name``` at Compute Canada; part 3 is your ```folder's name```. For example, the writer's directory is as follows:
-
-~~~
-/project/6003851/y2huang/big_sample_size_project/check
-~~~
+As all the processes are conducted using the **relative path**, it's very important to set up [your_directory] and use it correctly. 
 
 If you are not sure about the path of your working folder, try to type in 'pwd' command in linux or 'getwd()' in R language for reference. 
 
