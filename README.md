@@ -110,7 +110,7 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 <details><summary>rout</summary>
 
     ├──  log files after submitting jobs
-    │    ├── problem.Rout	         # log files for problem_sh for each sample size (kk = 1,...,60) and beta values (ss = 1,...,4)
+    │ 	 ├── problem.Rout	         # log files for problem_sh for each sample size (kk = 1,...,60) and beta values (ss = 1,...,4)
     │ 	 ├── solution_small.Rout         # log file for solution_small_sh for each sample size (kk = 1,...,50)
     │ 	 ├── solution_big.Rout		 # log file for solution_big_sh for each sample size (kk = 1,...,50) and experiment batch (gg = 1,...,10).
 </details>
