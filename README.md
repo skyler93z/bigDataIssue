@@ -209,7 +209,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
 ### scenario2
 
-<details><summary> 1. running code “F_possion_per_small.R” (20 hrs)</summary>
+<details><summary> 1. running code “problem.R” (20 hrs)</summary>
 
 - using loop kk equals 1 to 60 and loop ss equals 1 to 4 to set different sample size and beta values;
 
@@ -241,7 +241,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
  ~~~
 
 
-<details><summary>3. running code “F_possion_per_big.R” (20 hrs)</summary>
+<details><summary>3. running code “solution_big.R” (20 hrs)</summary>
 
 - using loop kk equals 1 to 50, loop ss equals 1 to 4 and loop gg equals 1 to 10 to set different sample size and beta values from n[51] to n[60] and set different batch of experiments;
 
