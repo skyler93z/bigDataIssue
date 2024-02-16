@@ -35,7 +35,7 @@ for(kk in 1:50){ # solution values for sample size 1:50
   idx = numeric(bb)
   for (ss in 1:bb) {
     load(paste0("~./scenario2/result/solution_typeI.per/typeIerror.per_",kk,"_",ss,".rda"))
-    idx[ss] = type1error.per
+    idx[ss] = typeIerror.per
   }
   data.pval[kk,] = idx
 }
@@ -49,8 +49,8 @@ for(kk in 51:60){ # solution values for sample size 51:60
       end_index <- gg * 100
       p.value.per_combined[start_index:end_index] <- p.value.per
     }
-    type1error.per = mean(p.value.per_combined < alpha)
-    data.pval[kk, ss] = type1error.per
+    typeIerror.per = mean(p.value.per_combined < alpha)
+    data.pval[kk, ss] = typeIerror.per
   }
 }
   
