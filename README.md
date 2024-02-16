@@ -201,7 +201,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
 ### scenario2
 
-<details><summary> 1. running code “problem.R” (20 hrs)</summary>
+<details><summary> 1. running code “problem.R” (16 hrs)</summary>
 
 - using loop kk equals 1 to 60 and loop ss equals 1 to 4 to set different sample size and beta values;
 
