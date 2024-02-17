@@ -150,7 +150,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 3. remember to create another layer of subdirectories under the **result** subdirectory of "scenario1" and "scenario2" to store the different results of the codes;
 4. allocate all relevant files into each subdirectory. The **rout**, **result** and **figure** folders will be empty at the beginning while the **code**, **sh** folders should look like the figure below:
 
-![image2](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/Readme_illustration2.png)
+![image2](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration2.png)
 
 ---
 
