@@ -147,10 +147,10 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 ## Before you start
 1. decide the path of [your_directory] to replicate our results;
 2. create the subdirectories, first layer: **PoisBias**, **scenario1**, **scenario2**; and second layer: **code**, **sh**, **rout**, **result**, **figure** at [your_directory]；
-3. create another layer of subdirectories **F_beta1.permu**, **F_CI**, **F_decision**, **F_p.value**, **F_p.value.per**, **F_type1**, **F_type1.per**, **F_type1.per.de** under the **result** subdirectory of "scenario1" and "scenario2" to store the different results of the codes;
+3. remember to create another layer of subdirectories under the **result** subdirectory of "scenario1" and "scenario2" to store the different results of the codes;
 4. allocate all relevant files into each subdirectory. The **rout**, **result** and **figure** folders will be empty at the beginning while the **code**, **sh** folders should look like the figure below:
 
-![image2](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/illustration2.png)
+![image2](https://github.com/ubcxzhang/Stock-Price-Prediction/blob/master/Readme_illustration2.png)
 
 ---
 
