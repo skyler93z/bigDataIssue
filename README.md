@@ -103,9 +103,9 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 <details><summary>sh</summary>
 
     ├──  sh
-    │ 	 ├── problem_sh		        # sh files
-    │ 	 ├── solution_small_sh							
-    │ 	 ├── solution_big_sh							
+    │ 	 ├── problem.sh		        # sh files
+    │ 	 ├── solution_small.sh							
+    │ 	 ├── solution_big.sh							
 </details>
 <details><summary>rout</summary>
 
@@ -212,7 +212,7 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 </details>
 
  ~~~
-    for kk in {1..60}; do for ss in {1..4}; do sbatch ./scenario2/sh/problem_sh $kk $ss; done; done
+    for kk in {1..60}; do for ss in {1..4}; do sbatch ./scenario2/sh/problem.sh $kk $ss; done; done
  ~~~
   
     
@@ -224,12 +224,12 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
     - use permutation method to correct the issue;
 
-- save file `./scenario2/result/solution_typeI/typeIerror_kk_ss.rda`, `./scenario2/result/solution_typeI.per/typeIerror.per_kk_ss.rda`, `./scenario2/result/solution_typeI.per.de/typeIerror.per.de_kk)ss.rda`, `./scenario2/result/solution_beta1.permu_small/beta1.permu_kk_ss.rda`, `./scenario2/result/solution_CI_small/CI_kk_ss.rda`
+- save file `./scenario2/result/solution_typeI/typeIerror_kk_ss.rda`, `./scenario2/result/solution_typeI.per/typeIerror.per_kk_ss.rda`, `./scenario2/result/solution_typeI.per.de/typeIerror.per.de_kk_ss.rda`, `./scenario2/result/solution_beta1.permu_small/beta1.permu_kk_ss.rda`, `./scenario2/result/solution_CI_small/CI_kk_ss.rda`
     
 </details>
 
  ~~~
-    for kk in {1..50}; do for ss in {1..4}; do sbatch ./scenario2/sh/solution_small_sh $kk $ss; done; done
+    for kk in {1..50}; do for ss in {1..4}; do sbatch ./scenario2/sh/solution_small.sh $kk $ss; done; done
  ~~~
 
 
@@ -241,11 +241,11 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
     - use permutation method to correct the issue;
 
-- save file `./scenario2/result/solution_p.value/p.value_kk_ss_gg.rda`, `./scenario2/result/solution_p.value.per/p.value.per_kk_ss_gg.rda`, `./scenario2/result/solution_decision/decision_kk_ss_gg.rda`, `./scenario2/result/solution_beta1.permu_big/beta1.permu_kk_ss)gg.rda`, `./scenario2/result/solution_CI_big/CI_kk_ss_gg.rda`
+- save file `./scenario2/result/solution_p.value/p.value_kk_ss_gg.rda`, `./scenario2/result/solution_p.value.per/p.value.per_kk_ss_gg.rda`, `./scenario2/result/solution_decision/decision_kk_ss_gg.rda`, `./scenario2/result/solution_beta1.permu_big/beta1.permu_kk_ss_gg.rda`, `./scenario2/result/solution_CI_big/CI_kk_ss_gg.rda`
     
 </details>
 
  ~~~
-    for kk in {51..60}; do for ss in {1..4}; do for gg in {1..10}; do sbatch ./scenario2/sh/solution_big_sh $kk $ss $gg; done; done; done
+    for kk in {51..60}; do for ss in {1..4}; do for gg in {1..10}; do sbatch ./scenario2/sh/solution_big.sh $kk $ss $gg; done; done; done
  ~~~
 
