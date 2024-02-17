@@ -114,7 +114,7 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
     │ 	 ├── solution_small.Rout         # log file for solution_small_sh for each sample size (kk = 1,...,50)
     │ 	 ├── solution_big.Rout		 # log file for solution_big_sh for each sample size (kk = 1,...,50) and experiment batch (gg = 1,...,10).
 </details>
-<details><summary>result (final & intermedia results)</summary>
+<details><summary>result</summary>
 		    
     ├──  result 
     │ 	 ├── problem_typeIerror          # a subdirectory that stores the .rda results of Type I error showing inflation
