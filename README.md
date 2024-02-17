@@ -13,7 +13,7 @@ For reproducibility, we build this repository to share our original codes, resul
 ![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration1.png)
 
 ### Note
-Under the main directory, we have multiple layers of subdirectory. The first layer is the three different examples: "PoisBias" is corresponding to Chapter3.1 of our manuscript; "scenario1" and "scenario2" are corresponding to the two assumption violation scenarios mentioned in Chapter 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
+Under the main directory, we have multiple layers of subdirectory. The first layer is the three different examples: "PoisBias" is corresponding to Section3.1 of our manuscript; "scenario1" and "scenario2" are corresponding to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
 
 We assume the user set the default directory at **Cedar** at Compute Canada
 ~~~
