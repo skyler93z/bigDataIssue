@@ -160,6 +160,7 @@ All our codes use **relative path**. So, users can run it in any working directo
 - The estimated time listed below is approximately 120% to 150% of the actual time to ensure submitted computing jobs are not killed due to overtime.
 - For example, on Compute Canada, ./scenario1/sh/xx.sh runs ./scenario1/code/xx.R, saves the results at ./scenario1/result/xx, and the log files at ./scenario1/rout/xx.Rout
 - For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produces graph at ./scenario1/figure
+- Note that data with bigger sample sizes requires much more computing time. So, we run experiments with smaller and bigger samples using two different approaches. The computing jobs for bigger data are split into multiple smaller jobs to use more computing nodes on HPC.
 
 ### scenario1
 
