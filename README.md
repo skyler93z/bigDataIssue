@@ -6,16 +6,17 @@ In the big data era, the need to reevaluate traditional statistical methods is p
 
 This project warns that larger samples can exacerbate minor issues into significant errors, leading to false conclusions. Through our simulation study, we demonstrate how growing sample sizes amplify issues arising from two commonly encountered violations of model assumptions in real-world data and lead to incorrect decisions. This underscores the need for vigilant analytical approaches in the era of big data. In response, we introduce a permutation-based test to counterbalance the effects of sample size and assumption discrepancies by neutralizing them between actual and permuted data. We demonstrate that this approach effectively stabilizes nominal Type I error rates across various sample sizes, thereby ensuring robust statistical inferences even amidst breached conventional assumptions in big data.
 
-For reproducibility, we build this repository to share our original codes, results, figures and all the other things used in our manuscript.
+For reproducibility, we built this repository to share our original codes, results, figures and all the other things used in our manuscript.
 
 ---
 ## Directory Layout
 ![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration1.png)
 
 ### Note
-Under the main directory, we have multiple layers of subdirectory. The first layer is the three different examples: "PoisBias" is corresponding to Section3.1 of our manuscript; "scenario1" and "scenario2" are corresponding to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
+Under the main directory, we have multiple layers of subdirectories. The first layer is the three different examples: "PoisBias" corresponds to Section 3.1 of our manuscript; "scenario1" and "scenario2" correspond to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
 
-We assume the user set the default directory at **Cedar** at Compute Canada
+The files under the subfolder "sh" are shell scripts used to submit computing jobs (to run the .R files in subfolders "code"), which are **system-specific**. If you use HPCs different from Compute Canada servers or personal computers, these sh files must be revised according to your system. 
+
 ~~~
     [your_deirctory]  
 ~~~
@@ -139,13 +140,11 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 ---
 ## Note
 
-All our codes use **relative path**. So, users can run it in any working directory ([your_directory]) of their choice, but it's critical to have creat subfolder. 
-
-If you are not sure about the path of your working folder, try to type in 'pwd' command in linux or 'getwd()' in R language for reference. 
+All our codes use **relative path**. So, users can run it in any working directory ([your_directory]) of their choice, but it's critical to create a subfolder structure the same as the instruction below. 
 
 ---
 ## Before you start
-1. decide the path of [your_directory] to replicate our results;
+1. choose your working directory and use that name to replace "[your_directory]";
 2. create the subdirectories in [your_directory], including first layer: **PoisBias**, **scenario1**, **scenario2** and second layer: **code**, **sh**, **rout**, **result**, **figure**；
 3. copy files from the repository to your folder; You only need to copy files from subfolders **code**, **sh** shown the figure below, while other files in subfolders **rout**, **result** and **figure** will be generated after running these files.
 
@@ -156,21 +155,21 @@ If you are not sure about the path of your working folder, try to type in 'pwd' 
 
 ## Running files (estimated time per job)
 
-- Always submit your job under [your_directory] instead of any of the subdirectory
+- Always submit your job under [your_directory] instead of a subdirectory
 - The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers
-- The estimated time listed below are approximately 120% to 150% of the actual time. Usually the actual file running will be shorter.
+- The estimated time listed below is approximately 120% to 150% of the actual time to ensure submitted computing jobs are not killed due to overtime.
 - For example, on Compute Canada, ./scenario1/sh/xx.sh runs ./scenario1/code/xx.R, saves the results at ./scenario1/result/xx, and the log files at ./scenario1/rout/xx.Rout
-- For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produce graph at ./scenario1/figure
+- For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produces graph at ./scenario1/figure
 
 ### scenario1
 
 <details><summary> 1. running code “F_possion_per_small.R” (11 hrs)</summary>
 
-- using loop kk equals 1 to 50 to set different sample size from n[1] to n[50];
+- using loop kk equals 1 to 50 to set different sample sizes from n[1] to n[50];
 
     - fit the regression model;
 
-    - use permutation method to correct the issue;
+    - use the permutation method to correct the issue;
 
 - save file `./scenario1/result/F_type1/F_type1error_kk.rda`, `./scenario1/result/F_type1.per/F_type1error.per_kk.rda`, `./scenario1/result/F_type1.per.de/F_type1error.per.de_kk.rda`, `./scenario1/result/F_beta1.permu/F_beta1.permu_kk.rda`, `./scenario1/result/F_CI/F_CI_kk.rda`
     
