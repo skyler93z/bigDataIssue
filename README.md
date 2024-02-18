@@ -162,6 +162,10 @@ All our codes use **relative path**. So, users can run it in any working directo
 - For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produces graph at ./scenario1/figure
 - Note that data with bigger sample sizes requires much more computing time. So, we run experiments with smaller and bigger samples using two different approaches. The computing jobs for bigger data are split into multiple smaller jobs to use more computing nodes on HPC.
 
+### PoisBias
+
+For the "PoisBias" part, since it's an easy example in our work, it can be directly run on our local computers. Therefore, it's not necessary for us to use the Compute Canada to run the code of this part.
+
 ### scenario1
 
 <details><summary> 1. running code “F_possion_per_small.R” (11 hrs)</summary>
