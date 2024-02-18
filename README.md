@@ -137,18 +137,17 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 </details>
 
 ---
-## Notice
+## Note
 
-As all the processes are conducted using the **relative path**, it's very important to set up [your_directory] and use it correctly. 
+All our codes use **relative path**. So, users can run it in any working directory ([your_directory]) of their choice, but it's critical to have creat subfolder. 
 
 If you are not sure about the path of your working folder, try to type in 'pwd' command in linux or 'getwd()' in R language for reference. 
 
 ---
 ## Before you start
 1. decide the path of [your_directory] to replicate our results;
-2. create the subdirectories, first layer: **PoisBias**, **scenario1**, **scenario2**; and second layer: **code**, **sh**, **rout**, **result**, **figure** at [your_directory]；
-3. remember to create another layer of subdirectories under the **result** subdirectory of "scenario1" and "scenario2" to store the different results of the codes;
-4. allocate all relevant files into each subdirectory. The **rout**, **result** and **figure** folders will be empty at the beginning while the **code**, **sh** folders should look like the figure below:
+2. create the subdirectories in [your_directory], including first layer: **PoisBias**, **scenario1**, **scenario2** and second layer: **code**, **sh**, **rout**, **result**, **figure**；
+3. copy files from the repository to your folder; You only need to copy files from subfolders **code**, **sh** shown the figure below, while other files in subfolders **rout**, **result** and **figure** will be generated after running these files.
 
 ![image2](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration2.png)
 
