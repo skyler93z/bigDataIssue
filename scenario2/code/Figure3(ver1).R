@@ -25,7 +25,7 @@ colnames(data.pval) = c("beta0=0.3, beta2=0.7", "beta0=0.3, beta2=0.8",
 for(kk in 1:nn){ # problem values
   idx = numeric(bb)
   for (ss in 1:bb) {
-    load(paste0("~./scenario2/result/problem_typeIerror/typeIerror_",kk,"_",ss,".rda"))
+    load(paste0("./scenario2/result/problem_typeIerror/typeIerror_",kk,"_",ss,".rda"))
     idx[ss] = typeIerror[ss]
   }
   data[kk,] = idx
@@ -34,7 +34,7 @@ for(kk in 1:nn){ # problem values
 for(kk in 1:50){ # solution values for sample size 1:50
   idx = numeric(bb)
   for (ss in 1:bb) {
-    load(paste0("~./scenario2/result/solution_typeI.per/typeIerror.per_",kk,"_",ss,".rda"))
+    load(paste0("./scenario2/result/solution_typeI.per/typeIerror.per_",kk,"_",ss,".rda"))
     idx[ss] = typeIerror.per
   }
   data.pval[kk,] = idx
@@ -44,7 +44,7 @@ for(kk in 51:60){ # solution values for sample size 51:60
   for (ss in 1:bb) {
     p.value.per_combined = numeric(nexperiment)
     for (gg in 1:10) {
-      load(paste0("~./scenario2/result/solution_p.value.per/p.value.per_",kk,"_",ss,"_",gg,".rda"))
+      load(paste0("./scenario2/result/solution_p.value.per/p.value.per_",kk,"_",ss,"_",gg,".rda"))
       start_index <- (gg - 1) * 100 + 1
       end_index <- gg * 100
       p.value.per_combined[start_index:end_index] <- p.value.per
