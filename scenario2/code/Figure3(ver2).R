@@ -26,7 +26,7 @@ for(kk in 1:nn){ # problem values
   idx = numeric(bb)
   for (ss in 1:bb) {
     load(paste0("./scenario2/result/problem_typeIerror/typeIerror_",kk,"_",ss,".rda"))
-    idx[ss] = typeIerror[ss]
+    idx[ss] = typeIerror
   }
   data[kk,] = idx
 }
