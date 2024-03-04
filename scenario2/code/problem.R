@@ -23,14 +23,14 @@ nexperiment = 1000
 alpha = 0.05
 
 # Initialize a vector to store results
-typeIerror = numeric(length(n))
+typeIerror = NA
 
 sample_size = n[kk]
 beta = beta_coef[,ss]
 p.value = numeric(nexperiment)
 
 # Loop over each experiment
-for(ii in 1:nexperiment) {
+for(i in 1:nexperiment) {
   x1 = rnorm(sample_size,mean = 0, sd=1)
   x2 = rnorm(sample_size,mean = 0, sd=1)
   
@@ -40,11 +40,11 @@ for(ii in 1:nexperiment) {
   mod_pois = glm(y ~ x1, data = df_pois, family = "poisson")
   
   # Store results
-  p.value[ii] = summary(mod_pois)$coefficient[2,4] < alpha
+  p.value[i] = summary(mod_pois)$coefficient[2,4] < alpha
 }
 
 # Calculate the type I error rate
-typeIerror[ss] = sum(p.value)/nexperiment
+typeIerror = sum(p.value)/nexperiment
 
 # Save the result
 save(typeIerror, file = paste0("./scenario2/result/problem_typeIerror/typeIerror_",kk,"_",ss,".rda"))
