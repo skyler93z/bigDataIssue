@@ -149,7 +149,6 @@ All our codes use **relative path**. So, users can run it in any working directo
 3. copy files from the repository to your folder; You only need to copy files from subfolders **code**, **sh** shown the figure below, while other files in subfolders **rout**, **result** and **figure** will be generated after running these files.
 
 ![image2](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration2.png)
-![image3](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration3.png)
 ---
 
 
