@@ -13,7 +13,7 @@ For reproducibility, we built this repository to share our original codes, resul
 ![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration1.png)
 
 ### Note
-Under the main directory, we have multiple layers of subdirectories. The first layer is the three different examples: "PoisBias" corresponds to Section 3.1 of our manuscript; "scenario1" and "scenario2" correspond to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
+Under the main directory, we have multiple layers of subdirectories. The first layer is the four different examples: "PoisBias" corresponds to Section 3.1 of our manuscript; "scenario1" and "scenario2" correspond to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript; "DE" corresponds to Section 5 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
 
 The files under the subfolder "sh" are shell scripts used to submit computing jobs (to run the .R files in subfolders "code"), which are **system-specific**. If you use HPCs different from Compute Canada servers or personal computers, these sh files must be revised according to your system. 
 
@@ -137,6 +137,43 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
     │ 	 └── Figure3(ver2).png		 # Figure3 automatically generated from a PNG file in Figure3(ver2).R			
 </details>
 
+### DE
+<details><summary>code</summary>
+
+    ├──  code 
+    │ 	 ├── DE_permutation.R		   # code for implementing permutation on the genomic data
+    │ 	 ├── MAST.R 	                   # code for DE analysis using MAST method
+    │ 	 ├── get_p_per.R 	           # code for getting the p-values from the permutation method
+    │ 	 └── DE_visual.R		   # code used for plotting Figure 4
+</details>
+<details><summary>sh</summary>
+
+    ├──  sh
+    │ 	 ├── DE_permutation.sh		   # sh files     
+    │ 	 ├── get_p_per.sh		   
+    │ 	 └── MAST.sh  
+</details>
+<details><summary>rout</summary>
+
+    ├──  log files after submitting jobs
+    │ 	 ├── DE_permutation.kk.Rout	     # log file for DE_permutation.sh for each permutation batch kk (kk=1,...,100)     
+    │ 	 ├── get_p_per.Rout	             # log file for get_p_per.sh
+    │ 	 └── MAST.Rout                       # log file for MAST.sh 
+</details>
+<details><summary>result</summary>
+	    
+    ├──  result 
+    │ 	 ├── gene_names_big.rds          # a rds file that stores the gene names
+    │ 	 ├── table_orig_big_MASTtest.rds		    # a rds file that stores the p-values from MAST method
+    │ 	 ├── logFC_obs.rds		    # a rds file that stores the observed logFC value
+    │ 	 ├── logFC_null_kk.rds		    # a rds file that stores the empirical logFC distribution from permutation method (kk=1,...,100)
+    │ 	 └── empirical_pval_big_10^6_abs.rds  # a rds file that stores the p-values from permutation method
+</details>
+<details><summary>figure</summary>
+
+    ├── figure   
+    │ 	 └── Figure.2		    # Figure2 in manuscript					
+</details>
 ---
 ## Note
 
