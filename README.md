@@ -174,7 +174,9 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
     ├── figure   
     │ 	 └── Figure4.png		    # Figure4 in manuscript					
 </details>
+
 ---
+
 ## Note
 
 All our codes use **relative path**. So, users can run it in any working directory ([your_directory]) of their choice, but it's critical to create a subfolder structure the same as the instruction below. 
@@ -191,13 +193,14 @@ All our codes use **relative path**. So, users can run it in any working directo
 
 ## Running files (estimated time per job)
 
-- Always submit your job under [your_directory] instead of a subdirectory
-- The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers
+- Always submit your job under [your_directory] instead of a subdirectory.
+- The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers. For each section, please run the codes according to the order listed below.
 - The estimated time listed below is approximately 120% to 150% of the actual time to ensure submitted computing jobs are not killed due to overtime.
 - For example, on Compute Canada, ./scenario1/sh/xx.sh runs ./scenario1/code/xx.R, saves the results at ./scenario1/result/xx, and the log files at ./scenario1/rout/xx.Rout
 - For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produces graph at ./scenario1/figure
 - Note that data with bigger sample sizes requires much more computing time. So, we run experiments with smaller and bigger samples using two different approaches. The computing jobs for bigger data are split into multiple smaller jobs to use more computing nodes on HPC.
-- Note that to run the code in the **DE** directory, you will need to download the original genomic dataset from the Human Cell Atlas public repository: [Human Cell Atlas Lung Atlas v1.0](https://data.humancellatlas.org/hca-bio-networks/lung/atlases/lung-v1-0) Our dataset, `altas_Epithelial_Immune.rds`, is a processed version of this original data. Due to data ownership and copyright considerations, we have not uploaded `altas_Epithelial_Immune.rds` directly in this repository. If you need access to this processed dataset, please feel free to contact us via email.
+- Note that to run the code in the **DE** directory, you will need to download the original genomic dataset from the Human Cell Atlas public repository: [Human Cell Atlas Lung Atlas v1.0](https://data.humancellatlas.org/hca-bio-networks/lung/atlases/lung-v1-0) Our dataset, `altas_Epithelial_Immune.rds`, is a processed version of this original data. Due to data ownership and copyright considerations, we have not uploaded `altas_Epithelial_Immune.rds` directly in this repository. If you need access to this processed dataset, please feel free to contact us via email. Please note that the path for the dataset is "./DE/altas_Epithelial_Immune.rds"
+
 
 ### PoisBias
 
