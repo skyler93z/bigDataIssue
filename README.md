@@ -1,4 +1,4 @@
-# Minor Issues Escalated to Critical Levels in Large Samples: A Permutation-Based Fix
+# Beyond Conventional P-Values: Addressing Statistical Challenges in Big Data
 ---
 📌 This is a fork of the original project (https://github.com/ubcxzhang/bigDataIssue), where I contributed as the primary developer under supervision.
 
@@ -14,7 +14,7 @@ For reproducibility, we built this repository to share our original codes, resul
 ![image](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration1.png)
 
 ### Note
-Under the main directory, we have multiple layers of subdirectories. The first layer is the three different examples: "PoisBias" corresponds to Section 3.1 of our manuscript; "scenario1" and "scenario2" correspond to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
+Under the main directory, we have multiple layers of subdirectories. The first layer is the four different examples: "PoisBias" corresponds to Section 3.1 of our manuscript; "scenario1" and "scenario2" correspond to the two assumption violation scenarios mentioned in Section 3.2 of our manuscript; "DE" corresponds to Section 5 of our manuscript. The second layer is the "code", "result", "sh", "figure", "rout" files.
 
 The files under the subfolder "sh" are shell scripts used to submit computing jobs (to run the .R files in subfolders "code"), which are **system-specific**. If you use HPCs different from Compute Canada servers or personal computers, these sh files must be revised according to your system. 
 
@@ -89,7 +89,7 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
 <details><summary>figure</summary>
 
     ├── figure   
-    │ 	 └── Figure.2		    # Figure2 in manuscript					
+    │ 	 └── Figure2.png		# Figure2 in manuscript					
 </details>
 
 ### scenario2
@@ -138,7 +138,46 @@ all the graphs in the paper are in the subdirectory directory at **figure** (usi
     │ 	 └── Figure3(ver2).png		 # Figure3 automatically generated from a PNG file in Figure3(ver2).R			
 </details>
 
+### DE
+<details><summary>code</summary>
+
+    ├──  code 
+    │ 	 ├── DE_permutation.R		   # code for implementing permutation on the genomic data
+    │ 	 ├── MAST.R 	                   # code for DE analysis using MAST method
+    │ 	 ├── get_p_per.R 	           # code for getting the p-values from the permutation method
+    │ 	 └── DE_visual.R		   # code used for plotting Figure 4
+</details>
+<details><summary>sh</summary>
+
+    ├──  sh
+    │ 	 ├── DE_permutation.sh		   # sh files     
+    │ 	 ├── get_p_per.sh		   
+    │ 	 └── MAST.sh  
+</details>
+<details><summary>rout</summary>
+
+    ├──  log files after submitting jobs
+    │ 	 ├── DE_permutation.kk.Rout	     # log file for DE_permutation.sh for each permutation batch kk (kk=1,...,100)     
+    │ 	 ├── get_p_per.Rout	             # log file for get_p_per.sh
+    │ 	 └── MAST.Rout                       # log file for MAST.sh 
+</details>
+<details><summary>result</summary>
+	    
+    ├──  result 
+    │ 	 ├── gene_names_big.rds                 # a rds file that stores the gene names
+    │ 	 ├── table_orig_big_MASTtest.rds        # a rds file that stores the p-values from MAST method
+    │ 	 ├── logFC_obs.rds		        # a rds file that stores the observed logFC value
+    │ 	 ├── logFC_null_kk.rds		        # a rds file that stores the empirical logFC distribution from permutation method (kk=1,...,100)
+    │ 	 └── empirical_pval_big_10^6_abs.rds    # a rds file that stores the p-values from permutation method
+</details>
+<details><summary>figure</summary>
+
+    ├── figure   
+    │ 	 └── Figure4.png		    # Figure4 in manuscript					
+</details>
+
 ---
+
 ## Note
 
 All our codes use **relative path**. So, users can run it in any working directory ([your_directory]) of their choice, but it's critical to create a subfolder structure the same as the instruction below. 
@@ -146,22 +185,23 @@ All our codes use **relative path**. So, users can run it in any working directo
 ---
 ## Before you start
 1. choose your working directory and use that name to replace "[your_directory]";
-2. create the subdirectories in [your_directory], including first layer: **PoisBias**, **scenario1**, **scenario2** and second layer: **code**, **sh**, **rout**, **result**, **figure**；
+2. create the subdirectories in [your_directory], including first layer: **PoisBias**, **scenario1**, **scenario2**, **DE** and second layer: **code**, **sh**, **rout**, **result**, **figure**；
 3. copy files from the repository to your folder; You only need to copy files from subfolders **code**, **sh** shown the figure below, while other files in subfolders **rout**, **result** and **figure** will be generated after running these files.
 
 ![image2](https://github.com/ubcxzhang/bigDataIssue/blob/main/Readme_illustration2.png)
-
 ---
 
 
 ## Running files (estimated time per job)
 
-- Always submit your job under [your_directory] instead of a subdirectory
-- The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers
+- Always submit your job under [your_directory] instead of a subdirectory.
+- The codes for plotting figures should be run after all the other codes, and we run the visualization codes on local computers. For each section, please run the codes according to the order listed below.
 - The estimated time listed below is approximately 120% to 150% of the actual time to ensure submitted computing jobs are not killed due to overtime.
 - For example, on Compute Canada, ./scenario1/sh/xx.sh runs ./scenario1/code/xx.R, saves the results at ./scenario1/result/xx, and the log files at ./scenario1/rout/xx.Rout
 - For example, on local computers, for the visualization codes, ./scenario1/code/Figure2.R produces graph at ./scenario1/figure
 - Note that data with bigger sample sizes requires much more computing time. So, we run experiments with smaller and bigger samples using two different approaches. The computing jobs for bigger data are split into multiple smaller jobs to use more computing nodes on HPC.
+- Note that to run the code in the **DE** directory, you will need to download the original genomic dataset from the Human Cell Atlas public repository: [Human Cell Atlas Lung Atlas v1.0](https://data.humancellatlas.org/hca-bio-networks/lung/atlases/lung-v1-0) Our dataset, `altas_Epithelial_Immune.rds`, is a processed version of this original data. Due to data ownership and copyright considerations, we have not uploaded `altas_Epithelial_Immune.rds` directly in this repository. If you need access to this processed dataset, please feel free to contact us via email. Please note that the path for the dataset should be "./DE/altas_Epithelial_Immune.rds"
+
 
 ### PoisBias
 
@@ -186,7 +226,7 @@ For the "PoisBias" part, since it's an easy example in our work, it can be direc
  ~~~
 
 
-<details><summary>2. running code “F_possion_per_big.R” (22 hrs)</summary>
+<details><summary> 2. running code “F_possion_per_big.R” (22 hrs)</summary>
 
 - using loop kk equals 1 to 50 and loop ss equals 1 to 10 to set different sample size from n[51] to n[60] and set different batch of experiments;
 
@@ -251,5 +291,48 @@ For the "PoisBias" part, since it's an easy example in our work, it can be direc
 
  ~~~
     for kk in {51..60}; do for ss in {1..4}; do for gg in {1..10}; do sbatch ./scenario2/sh/solution_big.sh $kk $ss $gg; done; done; done
+ ~~~
+
+### DE
+
+<details><summary> 1. running code “MAST.R” (23 hrs)</summary>
+
+- using MAST method to do the DE analysis;
+
+- save file `./DE/result/table_orig_big_MASTtest.rds`
+
+</details>
+
+ ~~~
+    sbatch ./DE/sh/MAST.sh
+ ~~~
+
+
+<details><summary> 2. running code “DE_permutation.R” (2 hrs)</summary>
+
+- using loop kk equals 1 to 100 to set different batch of permutations;
+
+    - permute the label;
+
+    - compute the logFC values after permutation;
+
+- save file `./DE/result/gene_names_big.rds`, `./DE/result/logFC_obs.rds`, `./DE/result/logFC_null_kk.rds` 
+    
+</details>
+
+ ~~~
+    for kk in {1..100}; do sbatch ./DE/sh/DE_permutation.sh $kk; done
+ ~~~
+
+<details><summary> 3. running code “get_p_per.R” (1 hrs)</summary>
+
+- getting the p-values from the permutation method;
+
+- save file `./DE/result/empirical_pval_big_10^6_abs.rds` 
+    
+</details>
+
+ ~~~
+    sbatch ./DE/sh/get_p_per.sh
  ~~~
 
