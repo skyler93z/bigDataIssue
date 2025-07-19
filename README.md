@@ -1,6 +1,6 @@
 # Minor Issues Escalated to Critical Levels in Large Samples: A Permutation-Based Fix
 ---
-📌 This is a fork of the original project (https://github.com/ubcxzhang/bigDataIssue), where I contributed as a co-developer under supervision.  
+📌 This is a fork of the original project (https://github.com/ubcxzhang/bigDataIssue), where I contributed as the primary developer under supervision.
 
 ## About this Project
 In the big data era, the need to reevaluate traditional statistical methods is paramount due to the challenges posed by vast datasets. While larger samples theoretically enhance accuracy and hypothesis testing power without increasing false positives, practical concerns about inflated Type-I errors persist. The prevalent belief is that larger samples can uncover subtle effects, necessitating dual consideration of p-value and effect size. Yet, the reliability of p-values from large samples remains debated.
