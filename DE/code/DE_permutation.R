@@ -23,7 +23,10 @@ Idents(seurat_obj) <- seurat_obj@meta.data$cell_type
 
 ## getting gene names
 gene_names <- rownames(seurat_obj)
-saveRDS(gene_names, file = "./DE/result/gene_names_big.rds")
+
+if (kk == 1){
+  saveRDS(gene_names, file = "./DE/result/gene_names_big.rds")
+}
 
 ### -----------permutation----------
 compute_perm_logFC <- function(X, Y, NN = 10000, batch.size = 1000, pseudocount = 1e-6) {
